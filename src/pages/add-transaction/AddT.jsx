@@ -10,7 +10,7 @@ const AddT = () => {
     const handleIncome = (e) => {
         e.preventDefault();
         const incomeData = {
-            type: "income",
+            type: "Income",
             category: e.target.category.value,
             amount: e.target.amount.value,
             description: e.target.description.value,
@@ -42,7 +42,7 @@ const AddT = () => {
     const handleExpense = (e) => {
         e.preventDefault();
         const expenseData = {
-            type: 'expense',
+            type: 'Expense',
             category: e.target.category.value,
             amount: e.target.amount.value,
             description: e.target.description.value,
@@ -59,10 +59,12 @@ const AddT = () => {
             },
             body: JSON.stringify(expenseData)
         })
-            .then(result => result.json())
+            .then(result => {
+                result.json()
+                
+            })
             .then(data => {
-                console.log(data);
-
+                alert('Transaction Successfully Compelete!')
             })
             .catch(err => {
                 console.log(err);

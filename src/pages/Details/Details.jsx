@@ -1,7 +1,14 @@
 import React from 'react';
 import Container from '../../components/layout/Container';
+import { useLoaderData } from 'react-router';
 
 const Details = () => {
+    const transactionDetails = useLoaderData();
+    console.log(transactionDetails);
+
+    const { type, category, amount, date, description, email, name } = transactionDetails;
+    
+
     const onUpdate = () => {
         alert('on update')
     }
@@ -19,16 +26,16 @@ const Details = () => {
                         <div className='w-[200px] h-[200px] bg-accent rounded-full absolute -top-16 -left-28 '></div>
                         <div className='w-[170px] h-[40px] bg-accent rounded-2xl absolute -right-5 -bottom-5'></div>
                         <div className='space-y-3'>
-                            <h2 className='text-4xl text-primary text-center font-semibold'>Income</h2>
+                            <h2 className='text-4xl text-primary text-center font-semibold'>{type}</h2>
                             <div className='flex justify-between'>
-                                <p className='text-2xl font-semibold'>Amount of Income : 8000 BDT</p>
-                                <p className='text-xl text-gray-500'>Date of Income : 10 / 09 / 2025</p>
+                                <p className='text-2xl font-semibold'>Amount of Income : {amount} BDT</p>
+                                <p className='text-xl text-gray-500'>Date of Income : {date}</p>
                             </div>
-                            <p className='text-2xl font-semibold'>Incomed by "Salary"</p>
+                            <p className='text-2xl font-semibold'>Incomed by "{category}"</p>
                             <div>
                                 <h2 className='text-2xl'>Description</h2>
                                 <p className='text-base text-gray-400'>
-                                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Officia cum minus nesciunt asperiores nulla! Illo aliquam officia aut. Adipisci voluptas cupiditate explicabo unde. Est necessitatibus rerum quod accusantium vero ea quos consequuntur, minima odio perferendis qui natus accusamus debitis earum asperiores blanditiis nisi officiis culpa neque? Officiis corrupti accusantium sapiente.
+                                    {description}
                                 </p>
                             </div>
                             <div className='text-end space-x-2'>

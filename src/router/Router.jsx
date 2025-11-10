@@ -30,10 +30,12 @@ export const router = createBrowserRouter([
         },
         {
           path: "/my-transaction",
+          loader: () => fetch('http://localhost:3000/my-transaction'),
           element: <Mytransaction />
         },
         {
-          path: "/details",
+          path: "/transaction-details/:id",
+          loader: ({ params }) => fetch(`http://localhost:3000/my-transaction/${params.id}`),
           element: <Details />
         }
     ]
