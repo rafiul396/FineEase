@@ -1,7 +1,7 @@
 import React, { use, useState } from 'react';
 import { IoMdEyeOff } from 'react-icons/io';
 import { IoEye } from 'react-icons/io5';
-import { Link, useNavigate } from 'react-router';
+import { Link, useLocation, useNavigate } from 'react-router';
 import Container from '../../components/layout/Container';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { AuthContext } from '../../provider/AuthProvider';
@@ -9,8 +9,10 @@ import { AuthContext } from '../../provider/AuthProvider';
 const googleProvider = new GoogleAuthProvider();
 
 const Login = () => {
+    const [error, setError] = useState(null)
     const [type, setType] = useState(true);
-    const { createUserByGoogle, setUser } = use(AuthContext);
+    const { createUserByGoogle, login, setUser } = use(AuthContext);
+    const location = useLocation();
     const navigate = useNavigate();
 
     const handleWithGoogle = () => {
@@ -26,6 +28,30 @@ const Login = () => {
                 console.log(err.code);
 
             })
+    }
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const pass = e.target.pass.value;
+
+        // clear errors
+        setError(null)
+
+        login(email, pass)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                e.target.reset();
+                setUser(user);
+                navigate(`${location.state ? location.state : "/"}`)
+            })
+            .catch(error => {
+                if (error.code === 'auth/invalid-credential') {
+                    setError('Email or Password is invalid!')
+                }
+            })
+
     }
 
 
@@ -59,17 +85,17 @@ const Login = () => {
                     <div className="w-full lg:w-[400px]">
                         <h2 className='font-semibold text-xl lg:text-3xl mb-8 text-center'>Log <span className='text-primary'>In</span></h2>
                         <div className="space-y-4">
-                            <form className='space-y-4'>
+                            <form onSubmit={handleLogin} className='space-y-4'>
                                 <input type="email" className="p-2 pl-4 border border-accent w-full rounded-full outline-primary text-xl font-extralight" placeholder="Email" name='email' />
                                 {/* {
-                        missingE && <p className='text-red-700'>{missingE}</p>
-                    } */}
+                                    missingE && <p className='text-red-700'>{missingE}</p>
+                                } */}
                                 <div className='relative'>
                                     <input type={!type ? 'text' : 'password'} className="p-2 pl-4 border border-accent w-full rounded-full outline-primary text-xl font-extralight" placeholder="Password" name='pass' /><span onKeyDown={(e) => e.preventDefault} onClick={handleInputType} className='text-xl absolute top-3.5 right-5'>{!type ? <IoMdEyeOff /> : <IoEye />}</span>
                                 </div>
-                                {/* {
-                        error && <p className='text-red-700'>{error}</p>
-                    } */}
+                                {
+                                    error && <p className='text-red-700'>{error}</p>
+                                }
                                 <button className="btn p-6 rounded-full w-full hover:bg-primary border-none shadow-none duration-300 text-lg bg-[#ff6900de] font-semibold text-white transition">Log In</button>
                             </form>
                             <p className='text-center font-semibold md:hidden'>Already have an account. Please <Link className='text-primary hover:underline' to="/login">Login</Link></p>
