@@ -1,10 +1,13 @@
 import React from 'react';
 import Container from '../../components/layout/Container';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, useNavigate, useParams } from 'react-router';
+import Swal from 'sweetalert2';
 
 const Details = () => {
+    const {id} = useParams();
+    console.log(id);
     const transactionDetails = useLoaderData();
-    console.log(transactionDetails);
+    const navigate = useNavigate();
 
     const { type, category, amount, date, description, email, name } = transactionDetails;
     
@@ -13,9 +16,36 @@ const Details = () => {
         alert('on update')
     }
 
-    const onDelete = () => {
-        alert('on delete')
-    }
+        const onDelete = () => {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    fetch(`http://localhost:3000/my-transaction/${id}`, {
+                        method: 'DELETE'
+                    })
+                        .then(result => result.json())
+                        .then(data => {
+                            console.log(data);
+                            if (data.deletedCount) {
+                                Swal.fire({
+                                    title: "Deleted!",
+                                    text: "Your file has been deleted.",
+                                    icon: "success"
+                                });
+                                navigate('/my-transaction')
+                            }
+                        })
+
+                }
+            });
+        }
 
 
     return (
