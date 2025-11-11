@@ -11,7 +11,7 @@ const Navbar = () => {
     const toggleMenu = () => setIsOpen(!isOpen);
     const handleFalse = () => setIsOpen(false);
     return (
-        <nav className="w-full bg-white py-3 px-6 md:px-10">
+        <nav className="w-full bg-white py-3 px-6 md:px-10 relative">
             <div className="flex items-center justify-between">
                 <div>
                     <Link className='cursor-pointer'>
@@ -58,20 +58,20 @@ const Navbar = () => {
                 </div>
             </div>
             {isOpen && (
-                <div className="mt-4 lg:hidden flex flex-col space-y-3 text-gray-700 font-medium">
+                <div className="p-4 mt-4 w-full bg-base-100 lg:hidden flex flex-col space-y-3 text-gray-700 font-medium absolute z-50 top-12 left-0">
                     <ul className="header-menu flex flex-col space-y-3">
-                        <li><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/" >Home</NavLink></li>
-                        <li><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/add-transaction">Add Transaction</NavLink></li>
-                        <li><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/my-transaction">My Transactions</NavLink></li>
-                        <li><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/report">Reports</NavLink></li>
+                        <li><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/" onClick={toggleMenu} >Home</NavLink></li>
+                        <li><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/add-transaction" onClick={toggleMenu}>Add Transaction</NavLink></li>
+                        <li><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/my-transaction" onClick={toggleMenu}>My Transactions</NavLink></li>
+                        <li><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/report" onClick={toggleMenu}>Reports</NavLink></li>
                     </ul>
                     <div className="flex flex-col space-y-2 pt-3">
-                        <button className="bg-[#0d1b2a] text-white text-sm py-2 rounded-full hover:opacity-90 transition">
+                        <Link to="/login" className="bg-[#0d1b2a] text-center text-white text-sm py-2 rounded-full hover:opacity-90 transition" onClick={toggleMenu}>
                             Log In
-                        </button>
-                        <button className="bg-orange-500 text-white text-sm py-2 rounded-full hover:bg-orange-600 transition">
+                        </Link>
+                        <Link to="/signup" className="bg-orange-500 text-center text-white text-sm py-2 rounded-full hover:bg-orange-600 transition" onClick={toggleMenu}>
                             Sign Up
-                        </button>
+                        </Link>
                     </div>
                 </div>
             )}
