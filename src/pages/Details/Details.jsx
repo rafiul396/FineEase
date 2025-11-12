@@ -57,7 +57,7 @@ const Details = () => {
                         if (data.deletedCount) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Your transaction has been deleted.",
                                 icon: "success"
                             });
                             navigate('/my-transaction')

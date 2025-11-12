@@ -10,6 +10,7 @@ import PrivateRoute from "../privateroute/PrivateRoute";
 import Report from "../pages/report/Report";
 import Update from "../pages/update/Update";
 import MyProfile from "../pages/my-profile/MyProfile";
+import UserProfile from "../pages/my-profile/UserProfile";
 
 export const router = createBrowserRouter([
   {
@@ -63,7 +64,15 @@ export const router = createBrowserRouter([
         },
         {
           path: "/my-profile",
-          element: <MyProfile />
+          element: <PrivateRoute>
+            <MyProfile />
+          </PrivateRoute>,
+          children: [
+            {
+              index: true,
+              element: <UserProfile />
+            }
+          ]
         }
     ]
   },

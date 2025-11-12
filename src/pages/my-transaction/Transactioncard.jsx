@@ -28,7 +28,7 @@ const Transactioncard = ({ info, infos, setInfos }) => {
                         if (data.deletedCount) {
                             Swal.fire({
                                 title: "Deleted!",
-                                text: "Your file has been deleted.",
+                                text: "Your transaction has been deleted.",
                                 icon: "success"
                             });
                             const remainData = infos.filter(remain => remain._id !== _id);
