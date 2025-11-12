@@ -55,7 +55,6 @@ export const router = createBrowserRouter([
         },
         {
           path: "/update/:id",
-          loader: ({ params }) => fetch(`http://localhost:3000/my-transaction/${params.id}`),
           element: <PrivateRoute>
             <Update />
           </PrivateRoute>

@@ -2,21 +2,37 @@ import React, { useEffect, useState } from 'react';
 import Container from '../../components/layout/Container';
 import { useLoaderData, useNavigate, useParams } from 'react-router';
 import toast from 'react-hot-toast';
+import { use } from 'react';
+import { AuthContext } from '../../provider/AuthProvider';
 
 const Update = () => {
     const [bool, setBool] = useState('')
+    const [info, setInfo] = useState({});
     const [loader, setLoader] = useState(true)
     const {id} = useParams();
+    const {user} = use(AuthContext);
     const navigate = useNavigate();
-    const info = useLoaderData();
-    // console.log(id);
-    // console.log(info.type);
+
+     useEffect(() => {
+            fetch(`http://localhost:3000/my-transaction/${id}`, {
+                headers: {
+                    authorization: `Bearer ${user.accessToken}`
+                }
+            })
+                .then(result => {
+                    return result.json()
+                })
+                .then(data => {
+                    setInfo(data)
+                    setLoader(false)
+                })
+        }, [])
+
     const { type, category, amount, date, description, _id } = info;
     useEffect(() => {
         setBool(type)
         setLoader(false)
     }, [type])
-    // console.log(bool);
 
      const handleIncome = (e) => {
             e.preventDefault();

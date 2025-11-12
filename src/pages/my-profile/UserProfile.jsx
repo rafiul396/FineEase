@@ -9,6 +9,7 @@ import {
 } from "react-icons/fi";
 import { AuthContext } from '../../provider/AuthProvider';
 import toast from 'react-hot-toast';
+import userProfile from '../../assets/user.png'
 
 const UserProfile = () => {
     const [bool, setBool] = useState(true)
@@ -54,7 +55,7 @@ const UserProfile = () => {
             <div className="flex w-full bg-base-100 shadow-md rounded-2xl justify-between items-center px-10 py-5">
                 <div className="relative w-24 h-24 md:w-28 md:h-28">
                     <img
-                        src={user?.photoURL}
+                        src={user?.photoURL ? user?.photoURL : userProfile}
                         alt="Profile"
                         className="w-full h-full rounded-full object-cover border-4 border-orange-400"
                     />
