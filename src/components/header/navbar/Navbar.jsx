@@ -39,7 +39,7 @@ const Navbar = () => {
                     {
                         user ? (
                             <>
-                                <img onClick={profileClicker} title={user?.displayName} className='w-12 h-12 cursor-pointer object-fill rounded-full border-2 border-secondary p-1' src={user.photoURL ? user.photoURL : userLogo} alt="Profile Picture" />
+                                <img onClick={profileClicker} title={user?.displayName} className='w-12 h-12 cursor-pointer object-fill rounded-full border-2 border-primary p-[2px]' src={user.photoURL ? user.photoURL : userLogo} alt="Profile Picture" />
                                 {open && (
                                     <div className="absolute right-16 top-14 w-48 bg-white border border-accent rounded shadow-lg z-50 p-1">
                                         <div>
