@@ -21,7 +21,7 @@ const AddT = () => {
         }
         // console.log(incomeData);
 
-        fetch('http://localhost:3000/my-transaction', {
+        fetch('https://finease-lyart.vercel.app/my-transaction', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -53,7 +53,7 @@ const AddT = () => {
         }
         // console.log(expenseData);
 
-        fetch('http://localhost:3000/my-transaction', {
+        fetch('https://finease-lyart.vercel.app/my-transaction', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

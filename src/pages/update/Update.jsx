@@ -14,7 +14,7 @@ const Update = () => {
     const navigate = useNavigate();
 
      useEffect(() => {
-            fetch(`http://localhost:3000/my-transaction/${id}`, {
+            fetch(`https://finease-lyart.vercel.app/my-transaction/${id}`, {
                 headers: {
                     authorization: `Bearer ${user.accessToken}`
                 }
@@ -45,7 +45,7 @@ const Update = () => {
             }
             // console.log(incomeData);
     
-            fetch(`http://localhost:3000/my-transaction/${_id}`, {
+            fetch(`https://finease-lyart.vercel.app/my-transaction/${_id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'
@@ -76,7 +76,7 @@ const Update = () => {
             }
             // console.log(expenseData);
     
-            fetch(`http://localhost:3000/my-transaction/${_id}`, {
+            fetch(`https://finease-lyart.vercel.app/my-transaction/${_id}`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json'

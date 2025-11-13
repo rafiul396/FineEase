@@ -19,7 +19,7 @@ const Transactioncard = ({ info, infos, setInfos }) => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/my-transaction/${_id}`, {
+                fetch(`https://finease-lyart.vercel.app/my-transaction/${_id}`, {
                     method: 'DELETE'
                 })
                     .then(result => result.json())

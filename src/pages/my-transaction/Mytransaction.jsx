@@ -7,6 +7,7 @@ import { useEffect } from 'react';
 import { use } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import NoDataMsg from '../../components/no-data-msg/NoDataMsg';
+import Loader from '../../loader/Loader';
 
 const Mytransaction = () => {
     const { user } = use(AuthContext)
@@ -15,7 +16,7 @@ const Mytransaction = () => {
     const [loader, setLoader] = useState(true)
 
     useEffect(() => {
-        fetch(`http://localhost:3000/my-transaction?email=${user.email}`, {
+        fetch(`https://finease-lyart.vercel.app/my-transaction?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -28,7 +29,7 @@ const Mytransaction = () => {
     }, [])
 
     if (loader) {
-        return <h1>Loading...</h1>
+        return <Loader />
     }
 
 

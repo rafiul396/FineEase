@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import { use } from 'react';
 import { AuthContext } from '../../provider/AuthProvider';
 import { useState } from 'react';
+import Loader from '../../loader/Loader';
 
 const Report = () => {
     const [infos, setInfos] = useState([])
@@ -13,7 +14,7 @@ const Report = () => {
     const { user } = use(AuthContext)
 
     useEffect(() => {
-        fetch(`http://localhost:3000/my-transaction?email=${user.email}`, {
+        fetch(`https://finease-lyart.vercel.app/my-transaction?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -26,7 +27,7 @@ const Report = () => {
     }, [])
 
     if (loader) {
-        return <h1>Loading...</h1>
+        return <Loader />
     }
 
     const allExpenses = infos.filter(expense => expense.type === 'Expense');

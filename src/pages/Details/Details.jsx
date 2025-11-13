@@ -3,6 +3,7 @@ import Container from '../../components/layout/Container';
 import { Link, useLoaderData, useNavigate, useParams } from 'react-router';
 import { AuthContext } from '../../provider/AuthProvider';
 import Swal from 'sweetalert2';
+import Loader from '../../loader/Loader';
 
 const Details = () => {
     const [sData, setSdata] = useState(null);
@@ -13,7 +14,7 @@ const Details = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        fetch(`http://localhost:3000/my-transaction/${id}`, {
+        fetch(`https://finease-lyart.vercel.app/my-transaction/${id}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -28,7 +29,7 @@ const Details = () => {
     }, [])
 
     useEffect(() => {
-        fetch(`http://localhost:3000/my-transaction?email=${user.email}`, {
+        fetch(`https://finease-lyart.vercel.app/my-transaction?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }
@@ -59,7 +60,7 @@ const Details = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:3000/my-transaction/${id}`, {
+                fetch(`https://finease-lyart.vercel.app/my-transaction/${id}`, {
                     method: 'DELETE'
                 })
                     .then(result => result.json())
@@ -80,7 +81,7 @@ const Details = () => {
     }
 
     if (loader) {
-        return <h1>Loading...</h1>
+        return <Loader />
     }
 
     const { type, category, amount, date, description, email, name, _id } = sData;

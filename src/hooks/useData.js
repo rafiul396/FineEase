@@ -8,7 +8,7 @@ const useData = () => {
     const [error, setError] = useState(null);
 
     useEffect(() => {
-        axios('http://localhost:3000/my-transaction')
+        axios('https://finease-lyart.vercel.app/my-transaction')
             .then(data => {
                 console.log(data);
                 
