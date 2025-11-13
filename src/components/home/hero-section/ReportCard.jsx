@@ -2,7 +2,7 @@ import React from 'react';
 
 const ReportCard = ({ image }) => {
     return (
-        <div className="w-[500px] xl:w-[700px] bg-base-100 shadow-lg rounded-xl p-3">
+        <div className="w-[500px] xl:w-[700px] bg-base-100 shadow-lg rounded-xl p-10">
             <img src={image} alt="report" className="w-full h-full object-contain" />
         </div>
     );

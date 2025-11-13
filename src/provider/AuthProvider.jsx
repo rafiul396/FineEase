@@ -6,7 +6,8 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
     const auth = getAuth(app);
-    const [user, setUser] = useState(null)
+    const [themeController, setThemeController] = useState('dark')
+    const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
 
     const createUserByGoogle = (provider) => {
@@ -53,7 +54,9 @@ const AuthProvider = ({ children }) => {
         setUser,
         logOut,
         loading,
-        setLoading
+        setLoading,
+        themeController,
+        setThemeController
     }
 
     return (

@@ -25,7 +25,7 @@ const AddT = () => {
         const incomeData = {
             type: "Income",
             category: e.target.category.value,
-            amount: e.target.amount.value,
+            amount: Number(e.target.amount.value),
             description: e.target.description.value,
             date: e.target.date.value,
             email: e.target.email.value,
@@ -87,12 +87,13 @@ const AddT = () => {
         const expenseData = {
             type: 'Expense',
             category: e.target.category.value,
-            amount: e.target.amount.value,
+            amount: Number(e.target.amount.value),
             description: e.target.description.value,
             date: e.target.date.value,
             email: e.target.email.value,
             name: e.target.names.value
         }
+        
         
 
         // clear error msg

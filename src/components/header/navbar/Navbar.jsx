@@ -19,7 +19,7 @@ const Navbar = () => {
     }
 
     return (
-        <nav className="w-full bg-white py-3 px-6 md:px-10 relative">
+        <nav className="w-full py-3 px-6 md:px-10 relative">
             <div className="flex items-center justify-between">
                 <div>
                     <Link className='cursor-pointer'>
@@ -30,7 +30,7 @@ const Navbar = () => {
                         />
                     </Link>
                 </div>
-                <ul className="header-menu hidden lg:flex items-center space-x-8 text-sm font-medium text-gray-700">
+                <ul className="header-menu hidden lg:flex items-center space-x-8 text-sm font-medium text-secondary">
                     <li onClick={() => setOpen(false)}><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/" >Home</NavLink></li>
                     <li onClick={() => setOpen(false)}><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/add-transaction">Add Transaction</NavLink></li>
                     <li onClick={() => setOpen(false)}><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/my-transaction">My Transactions</NavLink></li>

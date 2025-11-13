@@ -16,7 +16,7 @@ const Mytransaction = () => {
     const [loader, setLoader] = useState(true)
 
     useEffect(() => {
-        fetch(`https://finease-lyart.vercel.app/my-transaction?email=${user.email}`, {
+        fetch(`http://localhost:3000/my-transaction?email=${user.email}`, {
             headers: {
                 authorization: `Bearer ${user.accessToken}`
             }

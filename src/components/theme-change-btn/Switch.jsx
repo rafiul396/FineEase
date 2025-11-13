@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { use } from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import styled from 'styled-components';
+import { AuthContext } from '../../provider/AuthProvider';
 
 
 
 const Switch = () => {
+  const { themeController, setThemeController} = use(AuthContext)
 
   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
@@ -13,6 +15,7 @@ const Switch = () => {
     const html = document.querySelector('html');
     html.setAttribute("data-theme", theme)
     localStorage.setItem("theme", theme)
+    setThemeController(theme)
   }, [theme])
 
   const handleTheme = (checked) => {
@@ -23,7 +26,9 @@ const Switch = () => {
     <StyledWrapper>
       <label className="theme-switch">
         <input 
-        onChange={(e) => handleTheme(e.target.checked)} 
+        onChange={(e) => {
+          handleTheme(e.target.checked);
+        }} 
         checked={theme === "dark"}
         type="checkbox" 
         className="theme-switch__checkbox" />
