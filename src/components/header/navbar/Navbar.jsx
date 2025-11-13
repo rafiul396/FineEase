@@ -4,6 +4,7 @@ import logo from '../../../assets/logo.png'
 import { Link, NavLink } from 'react-router';
 import { AuthContext } from '../../../provider/AuthProvider';
 import userLogo from '../../../assets/user.png'
+import Switch from '../../theme-change-btn/Switch';
 
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -39,9 +40,10 @@ const Navbar = () => {
                     {
                         user ? (
                             <>
+                                        <Switch />
                                 <img onClick={profileClicker} title={user?.displayName} className='w-12 h-12 cursor-pointer object-fill rounded-full border-2 border-primary p-[2px]' src={user.photoURL ? user.photoURL : userLogo} alt="Profile Picture" />
                                 {open && (
-                                    <div className="absolute right-16 top-14 w-48 bg-white border border-accent rounded shadow-lg z-50 p-1">
+                                    <div className="absolute right-16 top-14 w-48 bg-white border border-accent rounded shadow-lg z-50 p-1 space-y-2">
                                         <div>
                                             <p className="px-4 py-2 text-sm text-gray-700">{user.displayName}</p>
                                         <p className="px-4 py-2 text-sm text-gray-700">{user.email}</p>
@@ -55,7 +57,9 @@ const Navbar = () => {
 
                             </>
                         ) : (
-                            <>
+                            <>  
+                                
+                                        <Switch />
                                 <Link to="/login" className="bg-[#0d1b2a] cursor-pointer text-white text-sm px-5 py-2 rounded-full hover:opacity-90 transition">
                                     Log In
                                 </Link>
