@@ -15,14 +15,18 @@ const Switch = () => {
     localStorage.setItem("theme", theme)
   }, [theme])
 
-  const handleTheme = (check) => {
-    setTheme(check ? "dark" : "light")  
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light")  
 }
 
   return (
     <StyledWrapper>
       <label className="theme-switch">
-        <input onChange={(e) => handleTheme(e.target.checked)} type="checkbox" className="theme-switch__checkbox" />
+        <input 
+        onChange={(e) => handleTheme(e.target.checked)} 
+        checked={theme === "dark"}
+        type="checkbox" 
+        className="theme-switch__checkbox" />
         <div className="theme-switch__container">
           <div className="theme-switch__clouds" />
           <div className="theme-switch__stars-container">
@@ -47,7 +51,7 @@ const Switch = () => {
 
 const StyledWrapper = styled.div`
   .theme-switch {
-    --toggle-size: 15px;
+    --toggle-size: 10px;
     /* the size is adjusted using font-size,
        this is not transform scale,
        so you can choose any size */
