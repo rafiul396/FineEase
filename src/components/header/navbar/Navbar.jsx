@@ -69,8 +69,7 @@ const Navbar = () => {
 
                                 </>
                             ) : (
-                                <>
-
+                                <div  className='hidden lg:flex items-center gap-4'>
                                     <Switch />
                                     <Link to="/login" className="bg-[#0d1b2a] cursor-pointer text-white text-sm px-5 py-2 rounded-full hover:opacity-90 transition">
                                         Log In
@@ -78,7 +77,7 @@ const Navbar = () => {
                                     <Link to="/signup" className="bg-orange-500 cursor-pointer text-white text-sm px-5 py-2 rounded-full hover:bg-primary transition">
                                         Sign Up
                                     </Link>
-                                </>
+                                </div>
                             )
                         }
                     </div>
@@ -99,6 +98,7 @@ const Navbar = () => {
                                     Log out
                                 </button>
                             </>) : (<>
+                            <Switch />
                                 <Link to="/login" className="bg-[#0d1b2a] text-center text-white text-sm py-2 rounded-full hover:opacity-90 transition" onClick={toggleMenu}>
                                     Log In
                                 </Link>

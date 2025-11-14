@@ -3,10 +3,7 @@ import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 
 const Transactioncard = ({ info, infos, setInfos }) => {
-    const [bool, setBool] = useState(null)
-
-
-    const { type, category, amount, date, description, _id } = info;
+    const { type, category, amount, date, _id } = info;
 
     const onDelete = () => {
         Swal.fire({
@@ -35,9 +32,6 @@ const Transactioncard = ({ info, infos, setInfos }) => {
                             setInfos(remainData)
                         }
                     })
-
-
-
             }
         });
     }
@@ -84,121 +78,6 @@ const Transactioncard = ({ info, infos, setInfos }) => {
                     </button>
                 </div>
             </div>
-            <dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-                <div className="modal-box">
-                    <div className="fieldset mt-2">
-                        {/* <h2 className='font-semibold text-xl lg:text-3xl mb-8 text-center'>Choose Your <span className='text-primary'>Transaction</span></h2> */}
-                        <div className='flex justify-center'>
-                            <button className={`px-10 py-2 border-2 border-primary border-r-0 font-semibold rounded-tl-lg rounded-bl-lg cursor-pointer text-black ${bool === 'income' ? 'bg-accent' : 'bg-base-100'}`} onClick={() => setBool('income')}>Income</button>
-                            <button className={`px-10 py-2 border-2 border-primary border-l-0 font-semibold rounded-tr-lg rounded-br-lg cursor-pointer text-black ${bool === 'expense' ? 'bg-accent' : 'bg-base-100'}`} onClick={() => setBool('expense')}>Expense</button>
-                        </div>
-                        {
-                            bool === 'income' ? (
-                                <div className='mt-5'>
-                                    <h2 className='font-semibold text-lg lg:text-3xl mb-8 text-center'>Add Your <span className='text-primary'>Income</span></h2>
-                                    <form className='space-y-3'>
-
-                                        <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">Select Income Category</label>
-                                        <select id="category"
-                                            className="w-full px-3 py-2 border border-accent rounded-lg bg-white text-gray-700 focus:outline-none focus:border-primary"
-                                            name='category'>
-                                            <option>Salary</option>
-                                            <option>Ride sharing</option>
-                                            <option>Pocket Money</option>
-                                            <option>Side Business</option>
-                                        </select>
-
-                                        <label
-                                            htmlFor="amt" className="block text-sm font-medium text-gray-700 mb-1">Amount</label>
-                                        <input
-                                            type="number"
-                                            id="amt"
-                                            className="w-full px-3 py-2 border border-accent rounded-lg bg-white text-gray-700 focus:outline-none focus:border-primary"
-                                            placeholder='Amount'
-                                            name='amount'
-                                        />
-
-                                        <label htmlFor="des" className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                                        <textarea
-                                            id="des"
-                                            cols="30"
-                                            rows="4"
-                                            className="w-full px-3 py-2 border border-accent rounded-lg bg-white text-gray-700 focus:outline-none focus:border-primary"
-                                            placeholder='Write Your Income Description...'
-                                            name='description' ></textarea>
-
-                                        <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">Select Date</label>
-                                        <input
-                                            type="date"
-                                            id="date"
-                                            className="w-full px-3 py-2 border border-accent rounded-lg text-gray-700 bg-white focus:outline-none focus:border-primary"
-                                            name="date"
-                                        />
-
-                                        <button className='btn p-5 rounded-lg w-full hover:bg-primary border-none shadow-none duration-300 text-lg bg-[#ff6900de] font-semibold text-white transition'>
-                                            Add Transaction
-                                        </button>
-                                    </form>
-                                </div>
-                            ) : (
-                                <div className='mt-5'>
-                                    <h2 className='font-semibold text-lg lg:text-3xl mb-8 text-center'>Add Your <span className='text-primary'>Expense</span></h2>
-                                    <form className='space-y-3'>
-
-                                        <label htmlFor="category" className="block text-sm font-medium text-gray-700 mb-1">Select Expense Category</label>
-                                        <select id="category"
-                                            className="w-full px-3 py-2 border border-accent rounded-lg bg-white text-gray-700 focus:outline-none focus:border-primary" name='category'>
-                                            <option>Home rent</option>
-                                            <option>Food</option>
-                                            <option>Transportation</option>
-                                            <option>Health</option>
-                                            <option>Personal</option>
-                                            <option>Education</option>
-                                            <option>Technology</option>
-                                            <option>Entertainment</option>
-                                            <option>Family</option>
-                                            <option>Others</option>
-                                        </select>
-
-                                        <label htmlFor="amt" className="block text-sm font-medium text-gray-700 mb-1">Amount</label>
-                                        <input
-                                            type="number"
-                                            id="amt"
-                                            className="w-full px-3 py-2 border border-accent rounded-lg bg-white text-gray-700 focus:outline-none focus:border-primary"
-                                            placeholder='Amount'
-                                            name='amount'
-                                        />
-
-                                        <label htmlFor="des" className="block text-sm font-medium text-gray-700 mb-1">Description</label>
-                                        <textarea
-                                            id="des"
-                                            cols="30"
-                                            rows="4"
-                                            className="w-full px-3 py-2 border border-accent rounded-lg bg-white text-gray-700 focus:outline-none focus:border-primary"
-                                            placeholder='Write Your Income Description...'
-                                            name='description' ></textarea>
-
-                                        <label htmlFor="date" className="block text-sm font-medium text-gray-700 mb-1">Select Date</label>
-                                        <input
-                                            type="date"
-                                            id="date"
-                                            className="w-full px-3 py-2 border border-accent rounded-lg text-gray-700 bg-white focus:outline-none focus:border-primary"
-                                            name="date"
-                                        />
-
-                                        <button className='btn p-5 rounded-lg w-full hover:bg-primary border-none shadow-none duration-300 text-lg bg-[#ff6900de] font-semibold text-white transition'>
-                                            Add Transaction
-                                        </button>
-                                    </form>
-                                </div>
-                            )
-                        }
-                    </div>
-                    <form method='dialog' className="fieldset mt-2">
-                        <button onClick={() => setBool(null)} className="btn bg-[#309256d9] text-primary hover:bg-secondary join-item">Discard</button>
-                    </form>
-                </div>
-            </dialog>
         </>
     );
 };
