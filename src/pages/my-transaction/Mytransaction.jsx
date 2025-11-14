@@ -12,6 +12,8 @@ const Mytransaction = () => {
 
     const [infos, setInfos] = useState([])
     const [loader, setLoader] = useState(true)
+    const [sorted, setSorted] = useState('Sort by Date & Amount');
+    const [sortedType, setSortedType] = useState('Sort by Income & Expense')
 
     useEffect(() => {
         fetch(`https://finease-lyart.vercel.app/my-transaction?email=${user.email}`, {
@@ -26,35 +28,41 @@ const Mytransaction = () => {
             })
     }, [])
 
+    const sortedByType = (
+        () => {
+            if (sortedType === 'Income') {
+                return [...infos].filter(info => info.type === 'Income')
+            } else if (sortedType === 'Expense') {
+                return [...infos].filter(info => info.type === 'Expense')
+            } else {
+                return infos;
+            }
+        }
+    )()
+    console.log(sortedByType);
+    
 
-    // const sortedApps = (
-    //     () => {
-    //     if(sorted === 'lowToHigh'){
-    //         return [...installApp].sort((a, b) => parseShorthandNumber(a.downloads) - parseShorthandNumber(b.downloads))
-    //     }else if(sorted === 'highToLow'){
-    //         return [...installApp].sort((a, b) => parseShorthandNumber(b.downloads) - parseShorthandNumber(a.downloads))
-    //     }else {
-    //         return installApp;
-    //     }
-    // }
-    // )()
 
-    // const uninstallApp = (appId) => {
-    //         //remove from local storage
-    //         removeApps(appId);
-    //         // instant update
-    //         setInstalledApp(prev => prev.filter(p => p.id !== appId));
-    //     }
+    const sortedTransactions = (
+        () => {
+            if (sorted === 'lowToHigh') {
+                return [...sortedByType].sort((a, b) => (a.amount) - (b.amount))
+            } else if (sorted === 'highToLow') {
+                return [...sortedByType].sort((a, b) => (b.amount) - (a.amount))
+            } else if (sorted === 'Newest') {
+                return [...sortedByType].sort((a, b) => (new Date((a.amount))) - (new Date((b.amount))))
+            } else if (sorted === 'Oldest') {
+                return [...sortedByType].sort((a, b) => (new Date((b.amount))) - (new Date((a.amount))))
+            } else {
+                return sortedByType;
+            }
+        }
+    )()
+
 
     if (loader) {
         return <Loader />
     }
-
-    
-
-
-
-
 
 
     return (
@@ -64,11 +72,20 @@ const Mytransaction = () => {
                 <div className='flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center mb-4'>
                     <h5 className='font-semibold'>{infos.length} Transaction Found</h5>
                     {/* sorting apps by its size */}
-                    <select defaultValue={"Sorted my Date and Amount"} className="select w-[130px]">
-                        <option value='none'>Sort by Size</option>
-                        <option value='lowToHigh'>Low - High</option>
-                        <option value='highToLow'>High - Low</option>
-                    </select>
+                    <div className='flex flex-col md:flex-row gap-2'>
+                        <select defaultValue={"Sorted my Income & Expense"} onChange={(e) => setSortedType(e.target.value)} className="select w-[200px] outline-0">
+                            <option value='none'>Sort by Income & Expense</option>
+                            <option value='Income'>Income</option>
+                            <option value='Expense'>Expense</option>
+                        </select>
+                        <select defaultValue={"Sorted my Date and Amount"} onChange={(e) => setSorted(e.target.value)} className="select w-[200px] outline-0">
+                            <option value='none'>Sort by Date & Amount</option>
+                            <option value='lowToHigh'>Low Amount - High Amount</option>
+                            <option value='highToLow'>High Amount - Low Amount</option>
+                            <option value='Newest'>Newest First</option>
+                            <option value='Oldest'>Oldest First</option>
+                        </select>
+                    </div>
                 </div>
                 {
                     infos.length === 0 ? (
@@ -76,7 +93,7 @@ const Mytransaction = () => {
                     ) : (
                         <div className='grid px-5 md:px-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4'>
                             {
-                                infos.map(info => <Transactioncard key={info._id} info={info} infos={infos} setInfos={setInfos} />)
+                                sortedTransactions.map(info => <Transactioncard key={info._id} info={info} infos={infos} setInfos={setInfos} />)
                             }
                         </div>
                     )
