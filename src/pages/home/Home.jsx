@@ -9,6 +9,7 @@ const Home = () => {
     const {user} = use(AuthContext);
     return (
         <>
+        <title>Home | FinEase</title>
             <Hero />
             {
                 user && <Overview />

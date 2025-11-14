@@ -67,6 +67,7 @@ const Mytransaction = () => {
 
     return (
         <section className='bg-neutral py-10 min-h-screen'>
+            <title>My Transaction | FinEase</title>
             <Container>
                 <h2 className='font-semibold text-lg lg:text-3xl mb-8 text-center'>My <span className='text-primary'>Transactions</span></h2>
                 <div className='flex flex-col md:flex-row gap-4 md:gap-0 justify-between items-center mb-4'>

@@ -48,6 +48,7 @@ const Report = () => {
 
     return (
         <section className='bg-neutral min-h-screen py-10'>
+            <title>Reports | FinEase</title>
             <Container>
 
                 <PieChartExample updatedExpenseData={updatedExpenseData} />

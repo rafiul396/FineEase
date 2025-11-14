@@ -16,6 +16,7 @@ const MyProfile = () => {
 
   return (
     <section className="min-h-screen bg-neutral flex flex-col md:flex-row">
+      <title>My Profile | FinEase</title>
       {/* Sidebar */}
       <aside className="w-full hidden md:w-1/4 lg:w-1/5 bg-accent-content shadow-sm lg:flex flex-row md:flex-col items-center md:items-start p-4 md:p-6">
         <h2 className="text-xl font-semibold mb-6 hidden md:block">My Profile</h2>
