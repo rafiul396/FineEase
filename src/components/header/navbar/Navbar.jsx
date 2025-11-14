@@ -1,4 +1,4 @@
-import React, { use, useState } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { HiMenuAlt3, HiX } from "react-icons/hi";
 import logo from '../../../assets/logo.png'
 import { Link, NavLink } from 'react-router';
@@ -10,9 +10,24 @@ import { FiUser } from 'react-icons/fi';
 const Navbar = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [open, setOpen] = useState(false);
-    const { user, logOut } = use(AuthContext);
+    const { user, logOut, themeController, setThemeController } = use(AuthContext);
 
     const toggleMenu = () => setIsOpen(!isOpen);
+
+    const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+    
+      useEffect(() => {
+        const html = document.querySelector('html');
+        html.setAttribute("data-theme", theme)
+        localStorage.setItem("theme", theme)
+        console.log(theme);
+        
+        setThemeController(theme)
+      }, [theme])
+    
+      const handleTheme = (checked) => {
+        setTheme(checked ? "dark" : "light")  
+    }
 
     const profileClicker = () => {
         setOpen(!open)
@@ -60,7 +75,7 @@ const Navbar = () => {
                                                 <p className=" text-sm">{user.email}</p>
                                             </div>
                                             <NavLink to="/my-profile" onClick={() => setOpen(false)} className=" border border-accent w-full flex justify-center items-center text-secondary text-left px-4 py-2 space-x-2"> <FiUser className="text-lg text-primary" /> <span>My Profile</span></NavLink>
-                                            <Switch />
+                                            <Switch handleTheme={handleTheme} theme={theme} />
                                             <button className='bg-orange-500 w-full cursor-pointer text-white text-sm px-5 py-2 rounded-full hover:bg-primary transition' onClick={logOut}>
                                                 Log out
                                             </button>
@@ -70,7 +85,7 @@ const Navbar = () => {
                                 </>
                             ) : (
                                 <div  className='hidden lg:flex items-center gap-4'>
-                                    <Switch />
+                                    {/* <Switch /> */}
                                     <Link to="/login" className="bg-[#0d1b2a] cursor-pointer text-white text-sm px-5 py-2 rounded-full hover:opacity-90 transition">
                                         Log In
                                     </Link>

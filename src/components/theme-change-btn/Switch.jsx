@@ -6,23 +6,23 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 
 
-const Switch = () => {
-  const { themeController, setThemeController} = use(AuthContext)
+const Switch = ({ handleTheme, theme }) => {
+  // const { themeController, setThemeController} = use(AuthContext)
 
-  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+//   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
 
-  useEffect(() => {
-    const html = document.querySelector('html');
-    html.setAttribute("data-theme", theme)
-    localStorage.setItem("theme", theme)
-    console.log(theme);
+//   useEffect(() => {
+//     const html = document.querySelector('html');
+//     html.setAttribute("data-theme", theme)
+//     localStorage.setItem("theme", theme)
+//     console.log(theme);
     
-    setThemeController(theme)
-  }, [theme])
+//     setThemeController(theme)
+//   }, [theme])
 
-  const handleTheme = (checked) => {
-    setTheme(checked ? "dark" : "light")  
-}
+//   const handleTheme = (checked) => {
+//     setTheme(checked ? "dark" : "light")  
+// }
 
   return (
     <StyledWrapper>
