@@ -26,3 +26,7 @@
   padding: 4px 8px;
   @apply rounded-full
 }
+
+.drop-menu .active {
+  background-color: #ff690066;
+}
