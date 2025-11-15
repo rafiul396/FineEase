@@ -21,7 +21,7 @@ const Transactioncard = ({ info, infos, setInfos }) => {
                 })
                     .then(result => result.json())
                     .then(data => {
-                        console.log(data);
+                        
                         if (data.deletedCount) {
                             Swal.fire({
                                 title: "Deleted!",

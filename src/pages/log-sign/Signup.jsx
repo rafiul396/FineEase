@@ -20,12 +20,12 @@ const Signup = () => {
         createUserByGoogle(googleProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                
                 setUser(user);
                 navigate("/")
             })
             .catch((err) => {
-                console.log(err.code);
+                
 
             })
     }
@@ -36,7 +36,7 @@ const Signup = () => {
         const pass = e.target.pass.value;
         const name = e.target.name.value;
         const photoURL = e.target.photo.value;
-        console.log(email, pass, name, photoURL);
+        
 
         // clear errros
         setError(null);
@@ -69,7 +69,7 @@ const Signup = () => {
         createUserByEmail(email, pass)
             .then(result => {
                 const user = result.user
-                // console.log(user);
+                
                 updateUserProfile({ displayName: name, photoURL: photoURL })
                     .then(() => {
                         e.target.reset();

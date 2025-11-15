@@ -10,7 +10,7 @@ const useData = () => {
     useEffect(() => {
         axios('https://finease-lyart.vercel.app/my-transaction')
             .then(data => {
-                console.log(data);
+                
                 
             })
             .catch(err => setError(err))

@@ -56,7 +56,7 @@ const Details = () => {
                 })
                     .then(result => result.json())
                     .then(data => {
-                        console.log(data);
+                        
                         if (data.deletedCount) {
                             Swal.fire({
                                 title: "Deleted!",
@@ -79,7 +79,7 @@ const Details = () => {
 
     // Total amount
     const sameCate = infos.filter(cate => cate.category === category)
-    // console.log(sameCate);
+    
     const total = sameCate.reduce((acc, item) => acc + Number(item.amount), 0)
 
     return (

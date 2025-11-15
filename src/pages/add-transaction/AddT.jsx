@@ -72,7 +72,7 @@ const AddT = () => {
                 setLoading(false)
             })
             .catch(err => {
-                // console.log(err);
+                
             })
 
     }
@@ -135,7 +135,7 @@ const AddT = () => {
                 setLoading(false)
             })
             .catch(err => {
-                console.log(err);
+                
             })
 
     }

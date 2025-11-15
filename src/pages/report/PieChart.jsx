@@ -105,9 +105,6 @@ const PieChartExample = ({ updatedExpenseData, updatedIncomeData }) => {
                     </div>
                 )
             }
-
-
-
         </div>
     );
 };

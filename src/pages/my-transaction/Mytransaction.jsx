@@ -56,7 +56,7 @@ const Mytransaction = () => {
         }
     )()
 
-    console.log(sortedTransactions);
+    
     
 
 

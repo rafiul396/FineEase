@@ -18,7 +18,7 @@ const UserProfile = () => {
     const handleUpdateProfile = (e) => {
             const name = e.target.name.value;
             const photo = e.target.photoURL.value;
-            console.log(name, photo);
+            
             
             e.target.reset();
     

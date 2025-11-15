@@ -7,22 +7,6 @@ import { AuthContext } from '../../provider/AuthProvider';
 
 
 const Switch = ({ handleTheme, theme }) => {
-  // const { themeController, setThemeController} = use(AuthContext)
-
-//   const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-
-//   useEffect(() => {
-//     const html = document.querySelector('html');
-//     html.setAttribute("data-theme", theme)
-//     localStorage.setItem("theme", theme)
-//     console.log(theme);
-    
-//     setThemeController(theme)
-//   }, [theme])
-
-//   const handleTheme = (checked) => {
-//     setTheme(checked ? "dark" : "light")  
-// }
 
   return (
     <StyledWrapper>

@@ -54,7 +54,7 @@ const Update = () => {
             description: e.target.description.value,
             date: e.target.date.value,
         }
-        // console.log(incomeData);
+        
 
         loaderTrueFalse();
 
@@ -67,13 +67,13 @@ const Update = () => {
         })
             .then(result => result.json())
             .then(data => {
-                console.log(data);
+                
                 toast.success('Successfully Updated!')
                 navigate(`/transaction-details/${id}`)
                 setLoading(false)
             })
             .catch(err => {
-                console.log(err);
+                
 
             })
 
@@ -103,13 +103,13 @@ const Update = () => {
                 return result.json()
             })
             .then(data => {
-                console.log(data);
+                
                 toast.success('Successfully Updated!')
                 navigate(`/transaction-details/${id}`)
                 setLoading(false)
             })
             .catch(err => {
-                console.log(err);
+                
             })
 
     }
@@ -117,10 +117,7 @@ const Update = () => {
     if (loader) {
         return <Loader />
     }
-
-    console.log(category);
-
-
+    
     return (
         <section className='flex items-center py-10 min-h-screen bg-neutral text-black px-7 xl:px-0'>
             <Container>

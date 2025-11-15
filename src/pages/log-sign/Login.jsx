@@ -20,13 +20,13 @@ const Login = () => {
         createUserByGoogle(googleProvider)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                
 
                 setUser(user);
                 navigate("/")
             })
             .catch((err) => {
-                console.log(err.code);
+                
 
             })
     }
@@ -42,7 +42,7 @@ const Login = () => {
         login(email, pass)
             .then(result => {
                 const user = result.user;
-                console.log(user);
+                
                 e.target.reset();
                 setUser(user);
                 navigate(`${location.state ? location.state : "/"}`)
