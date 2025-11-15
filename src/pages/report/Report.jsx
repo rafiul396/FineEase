@@ -30,6 +30,8 @@ const Report = () => {
         return <Loader />
     }
 
+
+    // Expense
     const allExpenses = infos.filter(expense => expense.type === 'Expense');
     const categories = [...new Set(allExpenses.map(item => item.category))];
 
@@ -39,19 +41,38 @@ const Report = () => {
     }));
 
     const updatedExpenseData = expenseData.map((item) => {
-  const total = allExpenses
-    .filter(exp => exp.category === item.name)
-    .reduce((acc, curr) => acc + Number(curr.amount), 0);
+        const total = allExpenses
+            .filter(exp => exp.category === item.name)
+            .reduce((acc, curr) => acc + Number(curr.amount), 0);
 
-  return { ...item, value: total };
-});
+        return { ...item, value: total };
+    });
+
+    // Income
+    const allIncome = infos.filter(income => income.type === 'Income');
+    const categoriesI = [...new Set(allIncome.map(item => item.category))];
+
+    const incomeData = categoriesI.map((category) => ({
+        name: category,
+        value: 0, // replace with real expense amount later
+    }));
+
+    const updatedIncomeData = incomeData.map((item) => {
+        const total = allIncome
+            .filter(exp => exp.category === item.name)
+            .reduce((acc, curr) => acc + Number(curr.amount), 0);
+
+        return { ...item, value: total };
+    });
+
+
 
     return (
         <section className='bg-neutral min-h-screen py-10'>
             <title>Reports | FinEase</title>
             <Container>
 
-                <PieChartExample updatedExpenseData={updatedExpenseData} />
+                <PieChartExample updatedExpenseData={updatedExpenseData} updatedIncomeData={updatedIncomeData} />
 
             </Container>
         </section>
