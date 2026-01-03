@@ -21,7 +21,7 @@ const CTASection = () => {
             Get Started
           </Link>
           <button className="bg-accent-content hover:bg-accent-content/90 text-primary font-semibold px-8 py-4 rounded-lg transition w-full sm:w-auto cursor-pointer">
-            Learn More
+            Learn More...
           </button>
         </div>
       </div>
