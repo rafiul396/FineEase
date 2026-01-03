@@ -15,17 +15,17 @@ const Navbar = () => {
     const toggleMenu = () => setIsOpen(!isOpen);
 
     const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
-    
-      useEffect(() => {
+
+    useEffect(() => {
         const html = document.querySelector('html');
         html.setAttribute("data-theme", theme)
         localStorage.setItem("theme", theme)
-        
+
         setThemeController(theme)
-      }, [theme])
-    
-      const handleTheme = (checked) => {
-        setTheme(checked ? "dark" : "light")  
+    }, [theme])
+
+    const handleTheme = (checked) => {
+        setTheme(checked ? "dark" : "light")
     }
 
     const profileClicker = () => {
@@ -45,10 +45,21 @@ const Navbar = () => {
                     </Link>
                 </div>
                 <ul className="header-menu hidden lg:flex items-center space-x-8 text-sm font-medium text-secondary">
-                    <li onClick={() => setOpen(false)}><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/" >Home</NavLink></li>
-                    <li onClick={() => setOpen(false)}><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/add-transaction">Add Transaction</NavLink></li>
-                    <li onClick={() => setOpen(false)}><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/my-transaction">My Transactions</NavLink></li>
-                    <li onClick={() => setOpen(false)}><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-base-100 px-2 py-1 rounded-full transition-all duration-300" to="/report">Reports</NavLink></li>
+                    <li onClick={() => setOpen(false)}><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-accent-content px-2 py-1 rounded-full transition-all duration-300" to="/" >Home</NavLink></li>
+                    {
+                        user && <>
+                            <li onClick={() => setOpen(false)}><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-accent-content px-2 py-1 rounded-full transition-all duration-300" to="/add-transaction">Add Transaction</NavLink></li>
+
+                            <li onClick={() => setOpen(false)}><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-accent-content px-2 py-1 rounded-full transition-all duration-300" to="/my-transaction">My Transactions</NavLink></li>
+
+                            <li onClick={() => setOpen(false)}><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-accent-content px-2 py-1 rounded-full transition-all duration-300" to="/report">Reports</NavLink></li>
+                        </>
+                    }
+                    <li onClick={() => setOpen(false)}><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-accent-content px-2 py-1 rounded-full transition-all duration-300" to="/blogs" >Blogs</NavLink></li>
+
+                    <li onClick={() => setOpen(false)}><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-accent-content px-2 py-1 rounded-full transition-all duration-300" to="/about" >About</NavLink></li>
+
+                    <li onClick={() => setOpen(false)}><NavLink className="cursor-pointer hover:text-primary hover:border-2 hover:border-primary border-2 border-accent-content px-2 py-1 rounded-full transition-all duration-300" to="/contact" >Contact</NavLink></li>
                 </ul>
 
                 {/* Mobile Menu */}
@@ -83,7 +94,7 @@ const Navbar = () => {
 
                                 </>
                             ) : (
-                                <div  className='hidden lg:flex items-center gap-4'>
+                                <div className='hidden lg:flex items-center gap-4'>
                                     {/* <Switch /> */}
                                     <Link to="/login" className="bg-[#0d1b2a] cursor-pointer text-white text-sm px-5 py-2 rounded-full hover:opacity-90 transition">
                                         Log In

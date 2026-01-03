@@ -12,6 +12,7 @@ import Update from "../pages/update/Update";
 import MyProfile from "../pages/my-profile/MyProfile";
 import UserProfile from "../pages/my-profile/UserProfile";
 import NotFound from "../pages/error-message/NotFound";
+import Blogs from "../pages/Blogs/Blogs";
 
 export const router = createBrowserRouter([
   {
@@ -60,6 +61,10 @@ export const router = createBrowserRouter([
           element: <PrivateRoute>
             <Update />
           </PrivateRoute>
+        },
+        {
+          path: "/blogs",
+          element: <Blogs />
         },
         {
           path: "/my-profile",

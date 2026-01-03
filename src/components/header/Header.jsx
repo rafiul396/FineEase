@@ -3,7 +3,7 @@ import Navbar from './navbar/Navbar';
 
 const Header = () => {
     return (
-        <header>
+        <header className='sticky top-0 z-50 bg-accent-content shadow'>
             <Navbar />
         </header>
     );

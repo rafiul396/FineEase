@@ -4,16 +4,21 @@ import { Outlet } from 'react-router';
 import { ToastContainer } from 'react-toastify';
 import { Toaster } from 'react-hot-toast';
 import Footer from '../components/footer/Footer';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 const Root = () => {
     return (
-        <div className='overflow-x-hidden'>
+        <>
             <Header />
-            <Outlet />
-            <Footer />
-            <ToastContainer />
-            <Toaster />
-        </div>
+            <div className='overflow-x-hidden'>
+                <Outlet />
+                <Footer />
+                <ToastContainer />
+                <Toaster />
+            </div>
+        </>
+
     );
 };
 
