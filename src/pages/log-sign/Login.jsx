@@ -13,6 +13,8 @@ const Login = () => {
     const [error, setError] = useState(null)
     const [type, setType] = useState(true);
     const { createUserByGoogle, login, setUser } = use(AuthContext);
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
     const location = useLocation();
     const navigate = useNavigate();
 
@@ -20,13 +22,13 @@ const Login = () => {
         createUserByGoogle(googleProvider)
             .then(result => {
                 const user = result.user;
-                
+
 
                 setUser(user);
                 navigate("/")
             })
             .catch((err) => {
-                
+
 
             })
     }
@@ -42,7 +44,7 @@ const Login = () => {
         login(email, pass)
             .then(result => {
                 const user = result.user;
-                
+
                 e.target.reset();
                 setUser(user);
                 navigate(`${location.state ? location.state : "/"}`)
@@ -61,6 +63,12 @@ const Login = () => {
         e.preventDefault();
         setType(!type);
     }
+
+    const handleAutoFill = () => {
+        setEmail('rafis@gmail.com');
+        setPassword('1234Rafiul');
+    }
+
 
     return (
         <section className='flex items-center py-10 bg-neutral text-black px-4 md:px-7 xl:px-0'>
@@ -88,17 +96,24 @@ const Login = () => {
                         <h2 className='font-semibold text-xl lg:text-3xl mb-8 text-center'>Log <span className='text-primary'>In</span></h2>
                         <div className="space-y-4">
                             <form onSubmit={handleLogin} className='space-y-4'>
-                                <input type="email" className="p-2 pl-4 border border-accent w-full rounded-full outline-primary text-xl font-extralight" placeholder="Email" name='email' />
+                                <input type="email" className="p-2 pl-4 border border-accent w-full rounded-full outline-primary text-xl font-extralight" placeholder="Email" name='email' defaultValue={email} />
                                 {/* {
                                     missingE && <p className='text-red-700'>{missingE}</p>
                                 } */}
                                 <div className='relative'>
-                                    <input type={!type ? 'text' : 'password'} className="p-2 pl-4 border border-accent w-full rounded-full outline-primary text-xl font-extralight" placeholder="Password" name='pass' /><span onKeyDown={(e) => e.preventDefault} onClick={handleInputType} className='text-xl absolute top-3.5 right-5'>{!type ? <IoMdEyeOff /> : <IoEye />}</span>
+                                    <input type={!type ? 'text' : 'password'} className="p-2 pl-4 border border-accent w-full rounded-full outline-primary text-xl font-extralight" placeholder="Password" name='pass' defaultValue={password} /><span onKeyDown={(e) => e.preventDefault} onClick={handleInputType} className='text-xl absolute top-3.5 right-5'>{!type ? <IoMdEyeOff /> : <IoEye />}</span>
                                 </div>
                                 {
                                     error && <p className='text-red-700'>{error}</p>
                                 }
                                 <button className="btn p-6 rounded-full w-full hover:bg-primary border-none shadow-none duration-300 text-lg bg-[#ff6900de] font-semibold text-white transition">Log In</button>
+                                <button
+                                    type="button"
+                                    onClick={handleAutoFill}
+                                    className="btn p-6 rounded-full w-full bg-neutral border-2 border-primary shadow-none duration-300 text-lg font-semibold text-secondary transition"
+                                >
+                                    Autofill Credentials
+                                </button>
                             </form>
                             <p className='text-center font-semibold md:hidden'>Already have an account. Please <Link className='text-primary hover:underline' to="/signup">Signup</Link></p>
                             <div className="divider divider-neutral">or</div>
