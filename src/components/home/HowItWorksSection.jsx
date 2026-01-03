@@ -69,13 +69,13 @@ const HowItWorksSection = () => {
                         {steps.map((step, index) => (
                             <div
                                 key={index}
-                                className={`flex flex-col items-center text-center group bg-white rounded-2xl p-6 animate__animated animate__fadeInUp animate__delay-${index + 2}s ${steps.length % 2 !== 0 && index === steps.length - 1 ? "md:col-span-2" : ""} `}
+                                className={`flex flex-col items-center text-center group bg-info rounded-2xl p-6 animate__animated animate__fadeInUp animate__delay-${index + 2}s ${steps.length % 2 !== 0 && index === steps.length - 1 ? "md:col-span-2" : ""} `}
                             >
                                 {/* Numbered Icon Circle */}
                                 <div className={`w-24 h-24 ${step.color} rounded-full flex items-center justify-center shadow-2xl transform group-hover:scale-110 group-hover:-translate-y-2 transition-all duration-500 mb-6 relative`}>
                                     {/* Glow Effect */}
                                     <div className={`absolute inset-0 ${step.color} rounded-full opacity-50 blur-xl group-hover:blur-2xl transition-all`}></div>
-                                    <span className="text-white text-3xl font-bold relative z-10">{step.number}</span>
+                                    {/* <span className="text-white text-3xl font-bold relative z-10">{step.number}</span> */}
                                     <div className="absolute inset-0 flex items-center justify-center">
                                         {step.icon}
                                     </div>
