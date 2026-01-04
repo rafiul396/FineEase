@@ -13,6 +13,8 @@ import MyProfile from "../pages/my-profile/MyProfile";
 import UserProfile from "../pages/my-profile/UserProfile";
 import NotFound from "../pages/error-message/NotFound";
 import Blogs from "../pages/Blogs/Blogs";
+import About from "../pages/about/About";
+import Contact from "../pages/contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -63,6 +65,14 @@ export const router = createBrowserRouter([
         {
           path: "/blogs",
           element: <Blogs />
+        },
+        {
+          path: "/about",
+          element: <About />
+        },
+        {
+          path: "contact",
+          element: <Contact />
         },
         {
           path: "/my-profile",

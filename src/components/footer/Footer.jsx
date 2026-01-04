@@ -22,10 +22,10 @@ const Footer = () => {
                             <p className='text-secondary'>Savar, Dhaka (DHA).</p>
                         </div>
                         <div className='flex items-center gap-2'>
-                            <AiOutlineMail className='text-xl' /><span className="hover:text-secondary cursor-pointer text-lg">finease@firebase.com</span>
+                            <AiOutlineMail className='text-xl' /><span className="hover:text-secondary cursor-pointer text-lg">support@finease.com</span>
                         </div>
                         <div className='flex items-center gap-2'>
-                            <FaPhoneAlt className='text-xl' /><span className="hover:text-secondary cursor-pointer text-lg">+8801234567809</span>
+                            <FaPhoneAlt className='text-xl' /><span className="hover:text-secondary cursor-pointer text-lg">+880 1234-567809</span>
                         </div>
                         <div className='flex gap-3'>
                             <a className="hover:text-secondary cursor-pointer text-2xl">
