@@ -2,7 +2,7 @@ import React from 'react';
 import Container from '../layout/Container';
 import logo from '../../assets/logo1.png'
 import { AiOutlineMail } from 'react-icons/ai';
-import { FaPhoneAlt, FaTwitterSquare } from 'react-icons/fa';
+import { FaLinkedin, FaPhoneAlt, FaTwitterSquare } from 'react-icons/fa';
 import { FaFacebookF, FaGithub, FaSquareInstagram, FaSquareXTwitter, FaXTwitter } from 'react-icons/fa6';
 import { Link } from 'react-router';
 
@@ -28,17 +28,14 @@ const Footer = () => {
                             <FaPhoneAlt className='text-xl' /><span className="hover:text-secondary cursor-pointer text-lg">+880 1234-567809</span>
                         </div>
                         <div className='flex gap-3'>
-                            <a className="hover:text-secondary cursor-pointer text-2xl">
+                            <a className="hover:text-secondary cursor-pointer text-2xl" href='https://github.com/rafiul396' target='_blank'>
                                 <FaGithub />
                             </a>
-                            <a className="hover:text-secondary cursor-pointer text-2xl">
+                            <a className="hover:text-secondary cursor-pointer text-2xl" href='https://www.facebook.com/rafiul396/' target='_blank'>
                                 <FaFacebookF />
                             </a>
-                            <a className="hover:text-secondary cursor-pointer text-2xl">
-                                <FaSquareInstagram />
-                            </a>
-                            <a className="hover:text-secondary cursor-pointer text-2xl">
-                                <FaSquareXTwitter />
+                            <a className="hover:text-secondary cursor-pointer text-2xl" href='https://www.linkedin.com/in/rafiul396/' target='_blank'>
+                                <FaLinkedin />
                             </a>
                         </div>
                     </nav>
